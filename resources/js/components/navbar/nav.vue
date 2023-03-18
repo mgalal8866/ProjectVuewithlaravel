@@ -21,7 +21,10 @@
           size="64"
         ></v-avatar>
 
-        <div>john@google.com</div>
+        <div>
+            <v-btn @click="changeLocale">
+                {{ $t('greeting') }}  
+            </v-btn> MG</div>
       </v-sheet>
 
       <v-divider></v-divider>
@@ -85,7 +88,23 @@
 </template>
 <script>
 
+
 export default {
+    setup() {
+    const changeLocale = () => {
+      if (this.$i18n.locale === "en") {
+        this.$i18n.locale = "ar";
+      } else {
+        this.$i18n.locale = "en";
+      }
+    };
+
+    return {
+      changeLocale,
+    };
+  },
+
+
     data: () => ({
       cards: ['Today', 'Yesterday'],
       drawer: null,
@@ -95,6 +114,7 @@ export default {
         ['mdi-delete', 'Trash'],
         ['mdi-alert-octagon', 'Spam'],
       ],
-    }),
-  }
+    })
+
+};
 </script>

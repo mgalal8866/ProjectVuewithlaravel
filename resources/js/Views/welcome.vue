@@ -1,7 +1,7 @@
 <template>
     <navb />
 
-  <!-- <v-btn @click=" mm()">CC</v-btn> -->
+  <v-btn @click=" mm()">ssss</v-btn>
   <we   />
 </template>
 <script>

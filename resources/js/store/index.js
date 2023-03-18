@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore } from 'Vuex'
 
 const store = createStore({
     state: {
@@ -10,7 +10,6 @@ const store = createStore({
         }
     }
 })
-
 export default store;
 // import Vue from 'vue';
 // import Vuex from 'vuex';
