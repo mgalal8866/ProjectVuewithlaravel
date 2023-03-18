@@ -1,10 +1,14 @@
 <template>
 
-<v-select @change="switchLanguage">
-    <v-option v-for="sLocale in supportedLocales" :key="`locale-${sLocale}`" :value="sLocale"
+<v-select @change="switchLanguage"  v-model="locale"  :items="supportedLocales"
+         item-title="`locale`"
+        item-value="1"
+         label="Lang">
+
+    <!-- <v-option v-for="sLocale in supportedLocales" :key="`locale-${sLocale}`" :value="sLocale"
     :selected="locale === sLocale">
         {{ t(`locale.${sLocale}`) }}
-    </v-option>
+    </v-option> -->
 </v-select>
 </template>
 <script>
