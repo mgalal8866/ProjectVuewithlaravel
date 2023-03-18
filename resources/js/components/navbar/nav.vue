@@ -23,8 +23,10 @@
 
         <div>
             <v-btn @click="changeLocale">
-                {{ $t('greeting') }}  
-            </v-btn> MG</div>
+                {{ $t('greeting',{name:'Mohamed'}) }}
+            </v-btn>
+<LangeSwitcher />
+        </div>
       </v-sheet>
 
       <v-divider></v-divider>
@@ -88,23 +90,15 @@
 </template>
 <script>
 
-
+import LangeSwitcher from "@/components/langswitch.vue"
 export default {
-    setup() {
-    const changeLocale = () => {
-      if (this.$i18n.locale === "en") {
-        this.$i18n.locale = "ar";
-      } else {
-        this.$i18n.locale = "en";
-      }
-    };
-
-    return {
-      changeLocale,
-    };
-  },
-
-
+    components: {
+        LangeSwitcher
+        },
+    // setup() {
+    //     const { t } = useI18n()
+    //  return{t}
+    // },
     data: () => ({
       cards: ['Today', 'Yesterday'],
       drawer: null,

@@ -1,0 +1,8 @@
+{
+       "locale":{
+        "en":"English",
+        "ar":"العربية"
+    },
+    "greeting": "مرحبا! {name}",
+    "goodbye": "مع السلامة!"
+}
