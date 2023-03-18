@@ -22,7 +22,7 @@
         ></v-avatar>
 
         <div>
-            <v-btn @click="changeLocale">
+            <v-btn>
                 {{ $t('greeting',{name:'Mohamed'}) }}
             </v-btn>
 <LangeSwitcher />
@@ -91,14 +91,15 @@
 <script>
 
 import LangeSwitcher from "@/components/langswitch.vue"
+import Tr from "@/i18n/translation"
 export default {
     components: {
         LangeSwitcher
         },
-    // setup() {
-    //     const { t } = useI18n()
-    //  return{t}
-    // },
+    setup() {
+
+     return{Tr}
+    },
     data: () => ({
       cards: ['Today', 'Yesterday'],
       drawer: null,

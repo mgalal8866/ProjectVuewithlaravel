@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouterView } from "vue-router";
 import welcome from "../Views/welcome.vue";
+import Tr from "@/i18n/translation";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,6 +8,7 @@ const router = createRouter({
         {
             path: "/:locale?",
             component: RouterView,
+            beforeEnter:Tr.routeMiddleware,
             children: [
                 {
                     path: "",

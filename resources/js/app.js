@@ -1,4 +1,4 @@
-// import './bootstrap';
+import './bootstrap';
 import { createApp } from "vue";
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
