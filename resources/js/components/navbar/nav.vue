@@ -23,7 +23,7 @@
 
         <div>
             <v-btn @click="changeLocale">
-                {{ $t('greeting') }}  
+                {{ $t('greeting') }}
             </v-btn> MG</div>
       </v-sheet>
 
@@ -91,6 +91,7 @@
 
 export default {
     setup() {
+        
     const changeLocale = () => {
       if (this.$i18n.locale === "en") {
         this.$i18n.locale = "ar";
