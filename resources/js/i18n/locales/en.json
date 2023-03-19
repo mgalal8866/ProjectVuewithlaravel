@@ -1,0 +1,9 @@
+ {
+    "locale":{
+        "en":"English",
+        "ar":"Arabic"
+    },
+    "greeting": "Hello!  {name}",
+    "goodbye": "Goodbye!"
+}
+
