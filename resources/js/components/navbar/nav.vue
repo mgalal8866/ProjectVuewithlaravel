@@ -22,17 +22,11 @@
         ></v-avatar>
 
         <div>
-<<<<<<< HEAD
-            <v-btn @click="changeLocale">
-                {{ $t('greeting') }}
-            </v-btn> MG</div>
-=======
             <v-btn>
                 {{ $t('greeting',{name:'Mohamed'}) }}
             </v-btn>
-<LangeSwitcher />
+            <LangeSwitcher />
         </div>
->>>>>>> 248e4418f63a2734c340007f8092e08b4c0f88d1
       </v-sheet>
 
       <v-divider></v-divider>
@@ -103,23 +97,6 @@ export default {
         LangeSwitcher
         },
     setup() {
-<<<<<<< HEAD
-        
-    const changeLocale = () => {
-      if (this.$i18n.locale === "en") {
-        this.$i18n.locale = "ar";
-      } else {
-        this.$i18n.locale = "en";
-      }
-    };
-
-    return {
-      changeLocale,
-    };
-  },
-
-=======
->>>>>>> 248e4418f63a2734c340007f8092e08b4c0f88d1
 
      return{Tr}
     },

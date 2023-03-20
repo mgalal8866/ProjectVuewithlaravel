@@ -1,12 +1,28 @@
 <template>
-
-<select class="custom-select" @change="switchLanguage"  >
-
+    <v-select
+    :items="supportedLocales"
+    label="selected Language"
+    v-model="selectedLanguage"
+    >
+  <template v-slot:selection="{ item, index }">
+      <span>{{ t(`locale.${item.title}`) }}</span>
+  </template>
+  <template v-slot:item="{  item, attrs, on }">
+    <v-list-item v-on="on" v-bind="attrs"  >
+      <v-list-item-content>
+        <v-list-item-title>
+          <span>{{  item.title }}</span>
+        </v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+  </template>
+</v-select>
+<!-- <select class="custom-select" @change="switchLanguage"  >
    <option v-for="sLocale in supportedLocales" :key="`locale-${sLocale}`" :value="sLocale"
     :selected="locale === sLocale">
         {{ t(`locale.${sLocale}`) }}
     </option>
-</select>
+</select> -->
 
 </template>
 <script>
@@ -14,10 +30,14 @@
 import Tr from "@/i18n/translation"
     import { useRouter } from 'vue-router'
 export default {
+    data() {
+    return {
+      selectedLanguage: '',}},
     setup() {
         const { t, locale } = useI18n()
         const supportedLocales = Tr.supportedLocales
         const router = useRouter()
+        // this.selectedLanguage = locale;
         const switchLanguage = async (event) => {
             const newLocale = event.target.value
             await Tr.switchLanguage(newLocale)
@@ -28,8 +48,19 @@ export default {
                     router.push("/")
             }
         }
+        // console.log(t(locale.value))
     return{ t, locale,supportedLocales, switchLanguage }
-}
+},
+computed: {
+    customText() {
+      const i18n = this.$i18n
+      return {
+        en: i18n.t('customText.en'),
+        ar: i18n.t('customText.ar'),
+
+      }
+    },
+  },
 }
 </script>
 <style>

@@ -5,7 +5,7 @@ const Trans = {
         return ["en", "ar"];
     },
     get currentLocale() {
-        i18n.global.locale.value ;
+        i18n.global.locale.value;
     },
     set currentLocale(newLocale) {
         i18n.global.locale.value = newLocale;
