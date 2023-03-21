@@ -1,28 +1,33 @@
 <template>
-    <v-select
+ 
+    <!-- <v-select
     :items="supportedLocales"
     label="selected Language"
     v-model="selectedLanguage"
+
+
     >
-  <template v-slot:selection="{ item, index }">
-      <span>{{ t(`locale.${item.title}`) }}</span>
-  </template>
-  <template v-slot:item="{  item, attrs, on }">
-    <v-list-item v-on="on" v-bind="attrs"  >
-      <v-list-item-content>
-        <v-list-item-title>
-          <span>{{  item.title }}</span>
-        </v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
-  </template>
-</v-select>
-<!-- <select class="custom-select" @change="switchLanguage"  >
+        <template v-slot:selection="{item}" >
+            <span >{{item.title }} </span>
+        </template>
+
+        <template v-slot:item="{item}">
+             <v-list-item  v-on="on" >
+            <v-list-item-content>
+                <v-list-item-title  @click="switchLanguage"
+                >
+                    <span>{{item}}</span>
+                 </v-list-item-title>
+            </v-list-item-content>
+            </v-list-item>
+        </template>
+</v-select> -->
+<select class="custom-select" @change="switchLanguage"  >
    <option v-for="sLocale in supportedLocales" :key="`locale-${sLocale}`" :value="sLocale"
     :selected="locale === sLocale">
         {{ t(`locale.${sLocale}`) }}
     </option>
-</select> -->
+</select>
 
 </template>
 <script>
