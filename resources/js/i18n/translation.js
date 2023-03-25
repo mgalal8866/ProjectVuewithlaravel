@@ -8,6 +8,7 @@ const Trans = {
         i18n.global.locale.value;
     },
     set currentLocale(newLocale) {
+        console.lo
         i18n.global.locale.value = newLocale;
     },
     isLocaleSupported(locale) {
@@ -47,6 +48,16 @@ const Trans = {
 
         return next();
     },
+    getUserLocale() {
+        const locale = window.navigator.language ||
+            window.navigator.userLanguage ||
+            Trans.defaultLocale
+
+        return {
+            locale: locale,
+            localeNoRegion: locale.split('-')[0]
+        }
+    },
 
     guessDefaultLocale() {
         const userPersistedLocale = Trans.getPersistedLocale();
@@ -68,6 +79,7 @@ const Trans = {
     },
 
     async switchLanguage(newLocale) {
+        console.log(newLocale)
         Trans.currentLocale = newLocale;
         document.querySelector("html").setAttribute("lang", newLocale);
         localStorage.setItem("user-locale", newLocale);
