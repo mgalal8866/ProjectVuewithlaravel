@@ -79,7 +79,7 @@ const Trans = {
     },
 
     async switchLanguage(newLocale) {
-        console.log(newLocale)
+        // console.log(newLocale)
         Trans.currentLocale = newLocale;
         document.querySelector("html").setAttribute("lang", newLocale);
         localStorage.setItem("user-locale", newLocale);
