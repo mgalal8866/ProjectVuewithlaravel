@@ -38,5 +38,5 @@ createApp(App)
     .use(store)
     .use(i18n)
     .use(router)
-    .use(vuetify, { direction: "rtl" })
+    .use(vuetify)
     .mount("#app");
