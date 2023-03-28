@@ -3,9 +3,13 @@
 namespace App\Http\Middleware;
 
 use Closure;
+
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Symfony\Component\HttpFoundation\Response;
-use  DB;
+
 class APIKey
 {
     /**
@@ -15,16 +19,15 @@ class APIKey
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $keys = DB::table('api_key')->select('api_key')->pluck('api_key');
-        //`dd( $keys->contains("adsfasdfasdfasdff"));
-
-        // $request->header('api_key')
-        if(  $keys->contains('adsfasdfasdfasdff'))
+        $keys = DB::table('api_keys')->select('api_key')->pluck('api_key');
+        if(  $keys->contains($request->header('api_key')))
         {
-            return $next($request);
+
+        return $next($request);
+
         }
         $data = [
-            'status'=> 200,
+            'status'=> 201,
             'msg' => 'Filed'
         ];
         return response()->json($data);

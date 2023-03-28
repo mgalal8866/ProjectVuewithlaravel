@@ -11,21 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('api_key', function (Blueprint $table) {
-            $table->id();
-            $table->string('for_app');
-            $table->string('api_key');
+        Schema::create('departments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('department')->nullable();
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrationsx.
+     * Reverse the migrations.
      */
     public function down(): void
     {
-    Schema::dropIfExists('api_key');
+        Schema::dropIfExists('departments');
     }
-
-
 };
