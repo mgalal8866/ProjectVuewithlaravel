@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
        Schema::create('api_key', function (Blueprint $table) {
-                $table->id();
+            $table->id();
             $table->string('for_app');
             $table->string('api_key');
             $table->timestamps();
