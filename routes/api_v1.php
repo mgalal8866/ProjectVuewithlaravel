@@ -19,9 +19,9 @@ Route::get('/new_app' , function() {
 
 
 Route::Post('/login' , [UserController::class ,'login']);
+Route::post('/new_users' , [UserController::class ,'create_user']);
 
 Route::middleware('jwt.verify')->group(function () {
     Route::get('/get_users' , [UserController::class ,'getusers']);
-    Route::post('/new_users' , [UserController::class ,'create_user']);
 });
 

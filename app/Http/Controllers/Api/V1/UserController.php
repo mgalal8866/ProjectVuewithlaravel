@@ -4,21 +4,23 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
 {
 
-    public function create_user(Request $requst)
+    public function create_user(UserRequest $request)
     {
-
-        return Resp( $requst->all());
-
+        // $validated = $request->validated();
+        // return Resp( $validated ,400);
         $user = User::create([
-            'employee_code' => '',
-            'name'=> '',
-            'email'=> '',
+            'employee_code' => $request->employee_code,
+            'name'=>  $request->name,
+            'password' => Hash::make($request->password),
+            'email'=>  '',
             'phone'=> '',
             'birthday'=> '',
             'date_hired'=> '',
@@ -29,7 +31,12 @@ class UserController extends Controller
             // "department_id"=> '',
             // "branch_id"=> '',
         ]);
-
+        if($user){
+            return Resp($user);
+        }else{
+            $validated = $request->validated();
+            return Resp( $validated ,400);
+        }
 
 
     }
@@ -68,6 +75,6 @@ class UserController extends Controller
 
      public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        // return $this->respondWithToken(auth()->refresh());
     }
 }
