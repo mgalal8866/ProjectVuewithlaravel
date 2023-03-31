@@ -24,10 +24,30 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        switch ($this->method()) {
+            case 'GET':
+            case 'DELETE':{
+                    return [];
+                }
+            case 'POST':{
+                    return [
+                        'employee_code' =>'required',
+                        'name'=> 'unique:users'
+                    ];
+                }
+            case 'PUT':{
+                    return [
+                        'title' => 'string|unique:posts|required',
+                        'body'  => 'required',
+                        'image' => 'string|nullable',
 
-          'employee_code' =>'required'
-        ];
+                    ];
+                }
+        }
+        // return [
+
+        //   'employee_code' =>'required'
+        // ];
     }
     public function messages()
     {
@@ -39,7 +59,7 @@ class UserRequest extends FormRequest
 
     {
 
-        throw new HttpResponseException( Resp($validator->errors(),'',200));
+        throw new HttpResponseException( Resp($validator->errors(),'',422));
 
     }
 }
