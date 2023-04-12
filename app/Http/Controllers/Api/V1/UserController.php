@@ -42,7 +42,11 @@ class UserController extends Controller
     }
     public function getusers()
     {
-        $user = User::all();
+            // if (!auth()->user()->can('get_users')) {
+            //     return response()->json(['message' => 'Unauthorized'], 403);
+            // }
+
+        $user = User::with('roles.permissions')->get();
         return $user ;
     }
 

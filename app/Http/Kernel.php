@@ -66,8 +66,9 @@ class Kernel extends HttpKernel
         'api_version' => \App\Http\Middleware\APIversion::class,
         'APIKey' => \App\Http\Middleware\APIKey::class,
         'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class, //WE ADDED THIS!
-
-
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'CheckPermission' => \App\Http\Middleware\CheckPermission::class,
     ];
 
 }
