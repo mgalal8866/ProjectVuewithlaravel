@@ -46,42 +46,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
     }
-    protected function mapWebRoutes()
-    {
-        foreach ($this->centralDomains() as $domain) {
-            Route::middleware('web')
-                ->domain($domain)
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        }
-    }
-
-    protected function mapApiRoutes()
-    {
-        foreach ($this->centralDomains() as $domain) {
-            Route::prefix('api')
-                ->domain($domain)
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-            Route::middleware(['api', 'api_version:v1','APIKey'])
-                        ->prefix('api/v1')
-                         ->domain($domain)
-                        ->namespace("{$this->apiNamespace}\V1")
-                        ->group(base_path('routes/api_v1.php'));
-
-            Route::middleware(['api', 'api_version:v2','APIKey'])
-                        ->prefix('api/v2')
-                         ->domain($domain)
-                        ->namespace("{$this->apiNamespace}\V2")
-                        ->group(base_path('routes/api_v2.php'));
-        }
-    }
-
-    protected function centralDomains(): array
-    {
-        return config('tenancy.central_domains');
-    }
+    
     /**
      * Configure the rate limiters for the application.
      */
