@@ -28,7 +28,7 @@ class APIKey
         }
         $data = [
             'status'=> 201,
-            'msg' => 'Filed'
+            'msg' => 'Check APi KEY Filed'
         ];
         return response()->json($data);
     }

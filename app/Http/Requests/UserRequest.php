@@ -31,7 +31,6 @@ class UserRequest extends FormRequest
                 }
             case 'POST':{
                     return [
-                        'employee_code' =>'required',
                         'name'=> 'unique:users'
                     ];
                 }
@@ -59,7 +58,8 @@ class UserRequest extends FormRequest
 
     {
 
-        throw new HttpResponseException( Resp($validator->errors(),'',422));
+        // throw new HttpResponseException(response()->json($validator->errors(), 422));
+        throw new HttpResponseException(Resp($validator->errors(),'', 422));
 
     }
 }

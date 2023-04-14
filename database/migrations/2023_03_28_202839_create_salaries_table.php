@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->increments('id');
+            // $table->uuid('user_id');
+            $table->uuid('user_uuid');
             $table->integer('user_id')->unsigned()->nullable();
             $table->string('Salary')->nullable();
             $table->string('year')->nullable();

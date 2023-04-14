@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('uuid');
             $table->string('employee_code')->nullable();
             $table->string('name');
             $table->string('email')->nullable();
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->string('birthday')->nullable();
             $table->string('national_id')->nullable();
             $table->string('date_hired')->nullable();
-            $table->enum('status',['To resign','constant'])->default('constant');
+            $table->enum('status',['To resign','constant','Dactive'])->default('constant');
             $table->string('date_to_resign')->nullable();
             $table->text('FCM')->nullable();
             $table->integer('position_id')->unsigned()->nullable();

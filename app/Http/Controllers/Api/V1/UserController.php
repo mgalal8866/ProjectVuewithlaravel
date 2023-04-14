@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -14,16 +16,17 @@ class UserController extends Controller
 
     public function create_user(UserRequest $request)
     {
+        // dd(Str::uuid()->toString());
         // $validated = $request->validated();
         // return Resp( $validated ,400);
         $user = User::create([
-            'employee_code' => $request->employee_code,
+            // 'employee_code' => Str::uuid()->toString() ,
             'name'=>  $request->name,
             'password' => Hash::make($request->password),
-            'email'=>  '',
-            'phone'=> '',
-            'birthday'=> '',
-            'date_hired'=> '',
+            'email'=>  '33',
+            'phone'=> '33',
+            'birthday'=> '3',
+            'date_hired'=> '22',
             // 'national_id'=> '',
             // 'status'=> '',
             // 'date_to_resign'=> '',
@@ -43,7 +46,7 @@ class UserController extends Controller
     public function getusers()
     {
         $user = User::all();
-        return $user ;
+        return Resp(UserResource::collection($user),'',200) ;
     }
 
     public function login()
