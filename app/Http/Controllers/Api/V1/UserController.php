@@ -46,7 +46,7 @@ class UserController extends Controller
     public function getusers()
     {
         $user = User::all();
-        return Resp(UserResource::collection($user),'',200) ;
+        return $user ;
     }
 
     public function login()

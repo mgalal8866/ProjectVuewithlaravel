@@ -20,6 +20,7 @@ class APIKey
     public function handle(Request $request, Closure $next): Response
     {
         $keys = DB::table('api_keys')->select('api_key')->pluck('api_key');
+        // dd( $request->header('api_key'),  $keys);
         if(  $keys->contains($request->header('api_key')))
         {
 
@@ -28,7 +29,7 @@ class APIKey
         }
         $data = [
             'status'=> 201,
-            'msg' => 'Check APi KEY Filed'
+            'msg' => 'Filed'
         ];
         return response()->json($data);
     }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,14 +14,7 @@ use App\Traits\UUID;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable , UUID;
-
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
-    protected $guarded = [];
+    use HasApiTokens, HasFactory, Notifiable;
 
 
     /**
@@ -46,6 +41,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
 
     protected $casts = [
         'email_verified_at' => 'datetime',
