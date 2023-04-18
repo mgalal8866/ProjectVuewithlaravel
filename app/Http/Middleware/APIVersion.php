@@ -14,7 +14,9 @@ class APIVersion
             if( config('app.api_latest') == $guard ){
 
                 return $next($request);
+            }else{
+
+                return response(['error' => 'Filed API V']);
             }
-          return response(['error' => 'Filed']);
         }
 }

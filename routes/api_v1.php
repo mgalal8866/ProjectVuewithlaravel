@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use Spatie\Multitenancy\Models\Tenant;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\Api\V1\UserController;
 
 Route::get('/' , function() {return 'ApiKey::all()';});
+
+
 
 Route::get('/new_app' , function() {
         $api = ApiKeys::create(['for_app' =>'PSTMAN','api_key'=>  'A'. Str::random(30)]);
